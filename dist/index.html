@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="files/reset.css?_v=20231229065321" />
+  <link rel="stylesheet" href="css/style.min.css?_v=20231229065321" />
+  <link rel="icon" href="favicon.ico" />
+  <title>Изучаем цифры</title>
+</head>
+
+  <body>
+    <div class="wrapper__touch">
+      <canvas class="canvas"> </canvas>
+      <form class="color__box" action="#">
+        <p>
+          Выберите цвет линии:
+          <input class="color__choose" type="color" name="bg" value="#000000" />
+        </p>
+      </form>
+      <div class="button__box">
+        <svg
+          class="btn__pictire pictire__left"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          id="angle-double-left"
+        >
+          <path
+            fill="#98c1d9"
+            d="M11.46,8.29a1,1,0,0,0-1.42,0l-3,3a1,1,0,0,0,0,1.42l3,3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L9.16,12l2.3-2.29A1,1,0,0,0,11.46,8.29ZM14.66,12,17,9.71a1,1,0,0,0-1.42-1.42l-3,3a1,1,0,0,0,0,1.42l3,3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z"
+          ></path>
+        </svg>
+
+        <svg
+          class="btn__audio active"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          id="volume"
+          data-sound="0"
+        >
+          <path
+            fill=" #98c1d9"
+            d="M12.43,4.1a1,1,0,0,0-1,.12L6.65,8H3A1,1,0,0,0,2,9v6a1,1,0,0,0,1,1H6.65l4.73,3.78A1,1,0,0,0,12,20a.91.91,0,0,0,.43-.1A1,1,0,0,0,13,19V5A1,1,0,0,0,12.43,4.1ZM11,16.92l-3.38-2.7A1,1,0,0,0,7,14H4V10H7a1,1,0,0,0,.62-.22L11,7.08ZM19.66,6.34a1,1,0,0,0-1.42,1.42,6,6,0,0,1-.38,8.84,1,1,0,0,0,.64,1.76,1,1,0,0,0,.64-.23,8,8,0,0,0,.52-11.79ZM16.83,9.17a1,1,0,1,0-1.42,1.42A2,2,0,0,1,16,12a2,2,0,0,1-.71,1.53,1,1,0,0,0-.13,1.41,1,1,0,0,0,1.41.12A4,4,0,0,0,18,12,4.06,4.06,0,0,0,16.83,9.17Z"
+          ></path>
+        </svg>
+
+        <svg
+          class="btn__audio"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          id="volume-mute"
+          data-sound="1"
+        >
+          <path
+            fill=" #98c1d9"
+            d="M12.43,4.1a1,1,0,0,0-1,.12L6.65,8H3A1,1,0,0,0,2,9v6a1,1,0,0,0,1,1H6.65l4.73,3.78A1,1,0,0,0,12,20a.91.91,0,0,0,.43-.1A1,1,0,0,0,13,19V5A1,1,0,0,0,12.43,4.1ZM11,16.92l-3.38-2.7A1,1,0,0,0,7,14H4V10H7a1,1,0,0,0,.62-.22L11,7.08ZM19.91,12l1.8-1.79a1,1,0,0,0-1.42-1.42l-1.79,1.8-1.79-1.8a1,1,0,0,0-1.42,1.42L17.09,12l-1.8,1.79a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l1.79-1.8,1.79,1.8a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z"
+          ></path>
+        </svg>
+        <svg
+          class="btn__play"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          id="play"
+        >
+          <path
+            fill="#98c1d9"
+            d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"
+          ></path>
+        </svg>
+        <svg
+          class="btn__pictire pictire__right"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          id="angle-double-right"
+        >
+          <path
+            fill="#98c1d9"
+            d="M8.46,8.29A1,1,0,1,0,7,9.71L9.34,12,7,14.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l3-3a1,1,0,0,0,0-1.42Zm8.5,3-3-3a1,1,0,0,0-1.42,1.42L14.84,12l-2.3,2.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l3-3A1,1,0,0,0,17,11.29Z"
+          ></path>
+        </svg>
+      </div>
+      <div class="number__choose">
+  <div class="number__choose-close">
+    <img src="img/close.svg" alt="close" />
+  </div>
+  <div class="number__choose-item" data-point="0">0</div>
+  <div class="number__choose-item" data-point="1">1</div>
+  <div class="number__choose-item" data-point="2">2</div>
+  <div class="number__choose-item" data-point="3">3</div>
+  <div class="number__choose-item" data-point="4">4</div>
+  <div class="number__choose-item" data-point="5">5</div>
+  <div class="number__choose-item" data-point="6">6</div>
+  <div class="number__choose-item" data-point="7">7</div>
+  <div class="number__choose-item" data-point="8">8</div>
+  <div class="number__choose-item" data-point="9">9</div>
+  <div class="number__choose-delete box">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      class="number__choose-delete svg"
+    >
+      <path
+        fill="#ffffff"
+        d="M10,18a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,10,18ZM20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Zm-3-1a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,14,18Z"
+      ></path>
+    </svg>
+    Очистить поле
+  </div>
+</div>
+
+
+      <div class="number__box"></div>
+      <div class="picture__wrapper"></div>
+      <div class="tool__item-box">
+  <div class="range__wrapper">
+    <div class="range__text">Выбирите толщину линии</div>
+    <div class="range__close">
+      <img src="img/close.svg" alt="close" />
+    </div>
+    <div class="range__box">
+      <div class="range__number begin"></div>
+      <div class="range__number end"></div>
+    </div>
+    <div class="range__item">
+      <div class="range__value-box">
+        <img src="img/Group-158.svg" alt="value" /><span
+          class="range__value"
+        ></span>
+      </div>
+      <div class="chekbox__track"></div>
+      <div class="chekbox__track1"></div>
+      <input
+        class="range__input"
+        type="range"
+        id="width"
+        name="width"
+        min="5"
+        max="40"
+        value="20"
+        step="1"
+      />
+    </div>
+  </div>
+  <div class="tool__item eraser__box tool__click" data-number="0">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      id="tag-alt"
+      class="tool__click tool__svg"
+      data-number="0"
+    >
+      <path
+        fill="#ffffff"
+        d="M7.5,6A1.5,1.5,0,1,0,9,7.5,1.5,1.5,0,0,0,7.5,6Zm13.62,4.71L12.71,2.29A1,1,0,0,0,12,2H3A1,1,0,0,0,2,3v9a1,1,0,0,0,.29.71l8.42,8.41a3,3,0,0,0,4.24,0L21.12,15a3,3,0,0,0,0-4.24Zm-1.41,2.82h0l-6.18,6.17a1,1,0,0,1-1.41,0L4,11.59V4h7.59l8.12,8.12a1,1,0,0,1,.29.71A1,1,0,0,1,19.71,13.53Z"
+      ></path>
+    </svg>
+    Ластик
+  </div>
+  <div class="tool__item stylus__box tool__click active" data-number="1">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      id="pen"
+      class="tool__click tool__svg"
+      data-number="1"
+    >
+      <path
+        fill="#FFFfff"
+        d="M22,7.24a1,1,0,0,0-.29-.71L17.47,2.29A1,1,0,0,0,16.76,2a1,1,0,0,0-.71.29L13.22,5.12h0L2.29,16.05a1,1,0,0,0-.29.71V21a1,1,0,0,0,1,1H7.24A1,1,0,0,0,8,21.71L18.87,10.78h0L21.71,8a1.19,1.19,0,0,0,.22-.33,1,1,0,0,0,0-.24.7.7,0,0,0,0-.14ZM6.83,20H4V17.17l9.93-9.93,2.83,2.83ZM18.17,8.66,15.34,5.83l1.42-1.41,2.82,2.82Z"
+      ></path>
+    </svg>
+    Перо
+  </div>
+  <div class="tool__item width__box tool__click" data-number="2">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      id="compress-point"
+      class="tool__click tool__svg width__box"
+      data-number="2"
+    >
+      <path
+        fill="#ffffff"
+        d="M21.71,20.29,15.41,14H17a1,1,0,0,0,0-2H13.41l5.66-5.66a1,1,0,1,0-1.41-1.41L12,10.59V7a1,1,0,0,0-2,0V8.59L3.71,2.29A1,1,0,0,0,2.29,3.71L8.59,10H7a1,1,0,0,0,0,2h3.59L4.93,17.66a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0L12,13.41V17a1,1,0,0,0,2,0V15.41l6.29,6.3a1,1,0,0,0,1.42,0A1,1,0,0,0,21.71,20.29Z"
+      ></path>
+    </svg>
+
+    Линия
+  </div>
+  <div class="tool__item reset__box tool__click" data-number="3">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      class="tool__click tool__svg"
+      data-number="3"
+    >
+      <path
+        fill="#ffffff"
+        d="M10,18a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,10,18ZM20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Zm-3-1a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,14,18Z"
+      ></path>
+    </svg>
+    Очистить
+  </div>
+  <div class="tool__item number__btn tool__click" data-number="4">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      id="list-ol-alt"
+      class="tool__click tool__svg number__btn"
+      data-number="4"
+    >
+      <path
+        fill="#ffffff"
+        d="M7 20H4v-.1c0-.5.4-.9.9-.9 1.4 0 2.6-.9 3-2.2.4-1.6-.5-3.3-2.1-3.7-1.3-.4-2.7.2-3.4 1.4-.3.5-.1 1.1.4 1.4.5.3 1.1.1 1.4-.4.3-.5.9-.6 1.4-.3.1.1.2.1.2.2.2.3.2.6.2.9-.2.4-.6.7-1 .7-1.7 0-3 1.3-3 2.9V21c0 .6.4 1 1 1h4c.6 0 1-.4 1-1s-.4-1-1-1zM7 9H6V3c0-.6-.4-1-1-1s-1 .4-1 1v1H3c-.6 0-1 .4-1 1s.4 1 1 1h1v3H3c-.6 0-1 .4-1 1s.4 1 1 1h4c.6 0 1-.4 1-1s-.4-1-1-1zm4-3h10c.6 0 1-.4 1-1s-.4-1-1-1H11c-.6 0-1 .4-1 1s.4 1 1 1zm10 14H11c-.6 0-1 .4-1 1s.4 1 1 1h10c.6 0 1-.4 1-1s-.4-1-1-1zm0-11H11c-.6 0-1 .4-1 1s.4 1 1 1h10c.6 0 1-.4 1-1s-.4-1-1-1zm0 6H11c-.6 0-1 .4-1 1s.4 1 1 1h10c.6 0 1-.4 1-1s-.4-1-1-1z"
+      ></path>
+    </svg>
+    Цифры
+  </div>
+  <button
+    class="tool__item menu__btn"
+    type="button"
+    name="button"
+    data-number="5"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      id="bars"
+      class="tool__click tool__svg menu__btn"
+      data-number="5"
+    >
+      <path
+        fill="#ffffff"
+        d="M3,8H21a1,1,0,0,0,0-2H3A1,1,0,0,0,3,8Zm18,8H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Zm0-5H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z"
+      ></path>
+    </svg>
+    Меню
+  </button>
+</div>
+
+
+      <div class="menu__wrapper">
+        <div class="reset__confirmation">
+          <div class="reset__text">Удалить содержимое холста?</div>
+          <div class="reset__button">
+            <button class="reset__btn yes">ДА, УДАЛИТЬ</button>
+            <button class="reset__btn no">ОТМЕНА</button>
+          </div>
+        </div>
+      </div>
+      <div class="menu__box">
+  <div class="menu__items">
+    <span class="menu__close">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="menu__close"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M13.2071 12.3492L19.8492 5.70711L19.1421 5L12.5 11.6421L6 5.14214L5.29289 5.84924L11.7929 12.3492L5 19.1421L5.70711 19.8492L12.5 13.0563L19.435 19.9914L20.1421 19.2843L13.2071 12.3492Z"
+          fill="#FFFfff"
+        />
+      </svg>
+    </span>
+    <div class="menu__item manual" data-link="manual">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        data-name="Layer 1"
+        viewBox="0 0 24 24"
+        id="invoice"
+        class="invoice manual"
+      >
+        <path
+          fill="#ffffff"
+          d="M13,16H7a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2ZM9,10h2a1,1,0,0,0,0-2H9a1,1,0,0,0,0,2Zm12,2H18V3a1,1,0,0,0-.5-.87,1,1,0,0,0-1,0l-3,1.72-3-1.72a1,1,0,0,0-1,0l-3,1.72-3-1.72a1,1,0,0,0-1,0A1,1,0,0,0,2,3V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V13A1,1,0,0,0,21,12ZM5,20a1,1,0,0,1-1-1V4.73L6,5.87a1.08,1.08,0,0,0,1,0l3-1.72,3,1.72a1.08,1.08,0,0,0,1,0l2-1.14V19a3,3,0,0,0,.18,1Zm15-1a1,1,0,0,1-2,0V14h2Zm-7-7H7a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2Z"
+        ></path>
+      </svg>
+      Инструкция
+    </div>
+    <div class="menu__item pay" data-link="pay">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        id="credit-card"
+        class="credit-card pay"
+      >
+        <path
+          fill="#ffffff"
+          d="M7,15h3a1,1,0,0,0,0-2H7a1,1,0,0,0,0,2ZM19,5H5A3,3,0,0,0,2,8v9a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V8A3,3,0,0,0,19,5Zm1,12a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V11H20Zm0-8H4V8A1,1,0,0,1,5,7H19a1,1,0,0,1,1,1Z"
+        ></path>
+      </svg>
+      Отблагодарить авторов
+    </div>
+    <div class="menu__item choose__picture">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        class="screenshot__svg choose__picture"
+        data-number="5"
+      >
+        <path
+          fill="#ffffff"
+          d="M10.07031,20.50291a1.00008,1.00008,0,0,0-1.18115-.9834c-1.30908.24024-2.96191.27637-3.40137-.958a5.70754,5.70754,0,0,0-1.83691-2.415,1.20073,1.20073,0,0,1-.1665-.10938,1,1,0,0,0-.93067-.64551H2.54883a.99965.99965,0,0,0-1,.99512c-.00391.81543.811,1.33789,1.1416,1.51465a4.4408,4.4408,0,0,1,.92383,1.35937c.36426,1.02344,1.42285,2.57617,4.46582,2.376.001.03516.00195.06836.00244.09863l.00439.26758a1,1,0,0,0,2,0l-.00488-.31836C10.07715,21.4951,10.07031,21.22068,10.07031,20.50291Zm10.667-15.126c.03174-.125.063-.26367.09034-.41992a6.27792,6.27792,0,0,0-.40821-3.293,1.002,1.002,0,0,0-.61572-.58007c-.356-.12012-1.67041-.35645-4.18408,1.25a13.86918,13.86918,0,0,0-6.354,0C6.76221.751,5.45459.9658,5.10205,1.07908a.99744.99744,0,0,0-.63135.584,6.3003,6.3003,0,0,0-.40332,3.35644c.02442.12793.05078.2461.07813.35449A6.26928,6.26928,0,0,0,2.89014,9.20311a8.42168,8.42168,0,0,0,.04248.92187c.334,4.60254,3.334,5.98438,5.42431,6.459-.04345.125-.083.25878-.11816.40039a1.00023,1.00023,0,0,0,1.94238.47851,1.6784,1.6784,0,0,1,.46778-.87793.99947.99947,0,0,0-.5459-1.74512c-3.4541-.39453-4.95362-1.80175-5.1792-4.89843a6.61076,6.61076,0,0,1-.03369-.73828,4.25769,4.25769,0,0,1,.91943-2.71289,3.022,3.022,0,0,1,.1958-.23145.99988.99988,0,0,0,.188-1.02441,3.3876,3.3876,0,0,1-.15527-.55567A4.09356,4.09356,0,0,1,6.1167,3.06346a7.54263,7.54263,0,0,1,2.415,1.17968,1.00877,1.00877,0,0,0,.82764.13282,11.77716,11.77716,0,0,1,6.17285.001,1.00549,1.00549,0,0,0,.83056-.13769,7.572,7.572,0,0,1,2.40528-1.19043,4.03977,4.03977,0,0,1,.0874,1.57812,3.205,3.205,0,0,1-.16895.60743.9999.9999,0,0,0,.188,1.02441c.07715.08691.1543.18066.22363.26855A4.12186,4.12186,0,0,1,20,9.20311a7.03888,7.03888,0,0,1-.0376.77734c-.22021,3.05566-1.72558,4.46387-5.1958,4.85937a1,1,0,0,0-.54541,1.7461,1.63079,1.63079,0,0,1,.46631.9082,3.06079,3.06079,0,0,1,.09229.81934v2.334C14.77,21.2949,14.77,21.78025,14.77,22.00291a1,1,0,1,0,2,0c0-.2168,0-.69238.00977-1.33984V18.31346a4.8815,4.8815,0,0,0-.15479-1.31153,4.25638,4.25638,0,0,0-.11621-.416,6.51258,6.51258,0,0,0,5.44531-6.42383A8.69677,8.69677,0,0,0,22,9.20311,6.13062,6.13062,0,0,0,20.7373,5.37693Z"
+        ></path>
+      </svg>
+      Рисунок для прорисовки
+    </div>
+    <div class="menu__item" data-link="screenshot">
+      <button class="screenshot__btn" type="button" name="button">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          class="screenshot__svg"
+          data-number="5"
+        >
+          <path
+            fill="#ffffff"
+            d="M19,6.5H17.72l-.32-1a3,3,0,0,0-2.84-2H9.44A3,3,0,0,0,6.6,5.55l-.32,1H5a3,3,0,0,0-3,3v8a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3v-8A3,3,0,0,0,19,6.5Zm1,11a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1v-8a1,1,0,0,1,1-1H7a1,1,0,0,0,1-.68l.54-1.64a1,1,0,0,1,.95-.68h5.12a1,1,0,0,1,.95.68l.54,1.64A1,1,0,0,0,17,8.5h2a1,1,0,0,1,1,1Zm-8-9a4,4,0,1,0,4,4A4,4,0,0,0,12,8.5Zm0,6a2,2,0,1,1,2-2A2,2,0,0,1,12,14.5Z"
+          ></path>
+        </svg>
+        Сделать скриншот
+      </button>
+    </div>
+  </div>
+</div>
+ <div class="info__box">
+  <div class="info__close">
+    <img src="img/close.svg" alt="close" />
+  </div>
+  <div class="info__title-box">
+    <div class="info__title">Приветствуем Вас в нашем вэб-приложении</div>
+    <div class="info__img-wrapper">
+      <div class="info__img">
+        <picture><source srcset="img/we1.webp" type="image/webp"><img src="img/we1.jpg" alt="григорьевы" /></picture>
+      </div>
+      <div class="info__we">Дмитрий и Елена Григорьевы</div>
+    </div>
+  </div>
+  <div class="info__text mb">
+    Данное приложение создано для изучения детьми дошкольного возраста цифр от 0
+    до 9
+  </div>
+  <div class="info__text mb">
+    Для активации функции рисования в смартфоне необходимо прикоснуться к экрану
+    пальцев в области холста и двигать пальцем в любую сторону
+  </div>
+  <div class="info__text mb">
+    Для активации функции рисования в компьютере необходимо нажать на левую
+    кнопки мыши в области холста и двигать мышь в любую из сторон
+  </div>
+  <div class="info__text">
+    Вывод образца цифры на экран происходит путём нажатия на кнопку "Цифры" и
+    выбора соотвествующего числа.
+  </div>
+</div>
+
+      <div class="pay__box">
+  <div class="pay__close">
+    <img src="img/close.svg" alt="close" />
+  </div>
+  <div class="info__title-box">
+    <div class="info__title">Спасибо за интерес к нашему проекту</div>
+    <div class="info__img-wrapper">
+      <div class="info__img">
+        <picture><source srcset="img/we1.webp" type="image/webp"><img src="img/we1.jpg" alt="григорьевы" /></picture>
+      </div>
+      <div class="info__we">Дмитрий и Елена Григорьевы</div>
+    </div>
+  </div>
+  <div class="info__text mb">
+    Будем признательны Вам за вашу финансовую благодарность за нашу работу. Это
+    поможет нам развиваться дальше и приносить миру ещё больше пользы.
+  </div>
+  <div class="info__text mb">
+    Сумма для перевода полностью на ваше усмотрение. Номер телефона для перевода
+    можно скопировать, просто нажав по кнопке ниже. Желательно осуществить
+    перевод в банк ВТБ, т.к. в данном банке наш счёт зарегистриован как у
+    самозанятых. Кроме ВТБ, перевод можно осущесвить в Сбербанк и Почтабанк.
+    Получатель: Елена Сергеевна Г.
+  </div>
+  <div class="info__text">
+    Написать свои комментарии, замечания или пожелания можно по ссылкам ниже:
+    <a class="info__link" href="https://vk.com/id88477103" target="_blank"
+      >Написать в ВК</a
+    >
+    <a class="info__link" href="https://t.me/dimanuga75" target="_blank"
+      >Написать в ТЕЛЕГРАМ</a
+    >
+  </div>
+  <button class="btn__phone" data-link="9246289616">
+    Скопировать номер телефона
+  </button>
+</div>
+ <div class="picture__box">
+  <span class="picture__close">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="menu__close"
+    >
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M13.2071 12.3492L19.8492 5.70711L19.1421 5L12.5 11.6421L6 5.14214L5.29289 5.84924L11.7929 12.3492L5 19.1421L5.70711 19.8492L12.5 13.0563L19.435 19.9914L20.1421 19.2843L13.2071 12.3492Z"
+        fill="#000000"
+      />
+    </svg>
+  </span>
+  <div class="picture__item picture__click" data-point="0">
+    <img
+      class="picture__click"
+      src="img/picture/pic0.jpg"
+      alt="животное"
+      data-point="0"
+    />
+  </div>
+  <div class="picture__item picture__click" data-point="1">
+    <img
+      class="picture__click"
+      src="img/picture/pic1.jpg"
+      alt="животное"
+      data-point="1"
+    />
+  </div>
+  <div class="picture__item picture__click" data-point="2">
+    <img
+      class="picture__click"
+      src="img/picture/pic2.jpg"
+      alt="животное"
+      data-point="2"
+    />
+  </div>
+  <div class="picture__item picture__click" data-point="3">
+    <img
+      class="picture__click"
+      src="img/picture/pic3.jpg"
+      alt="животное"
+      data-point="3"
+    />
+  </div>
+  <div class="picture__item picture__click" data-point="4">
+    <img
+      class="picture__click"
+      src="img/picture/pic4.jpg"
+      alt="животное"
+      data-point="4"
+    />
+  </div>
+  <div class="picture__item picture__click" data-point="5">
+    <img
+      class="picture__click"
+      src="img/picture/pic5.jpg"
+      alt="животное"
+      data-point="5"
+    />
+  </div>
+  <div class="picture__item picture__click" data-point="6">
+    <img
+      class="picture__click"
+      src="img/picture/pic6.jpg"
+      alt="животное"
+      data-point="6"
+    />
+  </div>
+  <div class="picture__item picture__click" data-point="7">
+    <img
+      class="picture__click"
+      src="img/picture/pic7.jpg"
+      alt="животное"
+      data-point="7"
+    />
+  </div>
+  <div class="picture__item picture__click" data-point="8">
+    <img
+      class="picture__click"
+      src="img/picture/pic8.jpg"
+      alt="животное"
+      data-point="8"
+    />
+  </div>
+  <div class="picture__item picture__click" data-point="9">
+    <img
+      class="picture__click"
+      src="img/picture/pic9.jpg"
+      alt="животное"
+      data-point="9"
+    />
+  </div>
+  <div class="picture__item picture__click" data-point="10">
+    <img
+      class="picture__click"
+      src="img/picture/pic10.jpg"
+      alt="животное"
+      data-point="10"
+    />
+  </div>
+  <div class="picture__item picture__click" data-point="11">
+    <img
+      class="picture__click"
+      src="img/picture/pic11.jpg"
+      alt="животное"
+      data-point="11"
+    />
+  </div>
+  <div class="picture__item picture__click" data-point="12">
+    <img
+      class="picture__click"
+      src="img/picture/pic12.jpg"
+      alt="животное"
+      data-point="12"
+    />
+  </div>
+  <div class="picture__item picture__click" data-point="13">
+    <img
+      class="picture__click"
+      src="img/picture/pic13.jpg"
+      alt="животное"
+      data-point="13"
+    />
+  </div>
+  <!--<div class="picture__item">
+    <div class="picture__text">Загрузить картинку</div>
+  </div>-->
+</div>
+<div class="number__wrapper">
+  <img class="number__pic-img" src="img/number/number0.gif" alt="number" />
+  <img class="number__pic-img" src="img/number/number1.gif" alt="number" />
+  <img class="number__pic-img" src="img/number/number2.gif" alt="number" />
+  <img class="number__pic-img" src="img/number/number3.gif" alt="number" />
+  <img class="number__pic-img" src="img/number/number4.gif" alt="number" />
+  <img class="number__pic-img" src="img/number/number5.gif" alt="number" />
+  <img class="number__pic-img" src="img/number/number6.gif" alt="number" />
+  <img class="number__pic-img" src="img/number/number7.gif" alt="number" />
+  <img class="number__pic-img" src="img/number/number8.gif" alt="number" />
+  <img class="number__pic-img" src="img/number/number9.gif" alt="number" />
+</div>
+
+<div class="picture__inner">
+  <picture><source srcset="img/picture/pic0.webp" type="image/webp"><img class="picture__img" src="img/picture/pic0.jpg" alt="животное" /></picture>
+  <picture><source srcset="img/picture/pic1.webp" type="image/webp"><img class="picture__img" src="img/picture/pic1.jpg" alt="животное" /></picture>
+  <picture><source srcset="img/picture/pic2.webp" type="image/webp"><img class="picture__img" src="img/picture/pic2.jpg" alt="животное" /></picture>
+  <picture><source srcset="img/picture/pic3.webp" type="image/webp"><img class="picture__img" src="img/picture/pic3.jpg" alt="животное" /></picture>
+  <picture><source srcset="img/picture/pic4.webp" type="image/webp"><img class="picture__img" src="img/picture/pic4.jpg" alt="животное" /></picture>
+  <picture><source srcset="img/picture/pic5.webp" type="image/webp"><img class="picture__img" src="img/picture/pic5.jpg" alt="животное" /></picture>
+  <picture><source srcset="img/picture/pic6.webp" type="image/webp"><img class="picture__img" src="img/picture/pic6.jpg" alt="животное" /></picture>
+  <picture><source srcset="img/picture/pic7.webp" type="image/webp"><img class="picture__img" src="img/picture/pic7.jpg" alt="животное" /></picture>
+  <picture><source srcset="img/picture/pic8.webp" type="image/webp"><img class="picture__img" src="img/picture/pic8.jpg" alt="животное" /></picture>
+  <picture><source srcset="img/picture/pic9.webp" type="image/webp"><img class="picture__img" src="img/picture/pic9.jpg" alt="животное" /></picture>
+  <picture><source srcset="img/picture/pic10.webp" type="image/webp"><img class="picture__img" src="img/picture/pic10.jpg" alt="животное" /></picture>
+  <picture><source srcset="img/picture/pic11.webp" type="image/webp"><img class="picture__img" src="img/picture/pic11.jpg" alt="животное" /></picture>
+  <picture><source srcset="img/picture/pic12.webp" type="image/webp"><img class="picture__img" src="img/picture/pic12.jpg" alt="животное" /></picture>
+  <picture><source srcset="img/picture/pic13.webp" type="image/webp"><img class="picture__img" src="img/picture/pic13.jpg" alt="животное" /></picture>
+</div>
+<div class="pic__current">
+  <img
+    id="picCurrent"
+    crossorigin=""
+    src="img/picture/pic0.jpg"
+    alt="животное"
+  />
+</div>
+<div class="img__current">
+  <img
+    id="imgCurrent"
+    crossorigin=""
+    src="img/number/number0.gif"
+    alt="цифра"
+  />
+</div>
+<div class="hi__wrapper">
+  <div class="hi__close"><img src="img/close.svg" alt="close" /></div>
+  <div class="hi__text">
+    Приветствуем Вас в приложении
+    <strong class="hi__name">"Изучаем цифры"</strong>. Рекомендуем перед
+    использованием ознакомиться с инструкцией, которое находится по кнопке
+    "Меню" => "Инструкция". Время прочтения не более 1 минуты.
+  </div>
+</div>
+
+    </div>
+    <script type="text/javascript" src="files/html2canvas.min.js?_v=20231229065321"></script>
+    <script type="text/javascript" src="files/FileSaver.min.js?_v=20231229065321"></script>
+    <!--<script type="text/javascript" src="files/animations.js?_v=20231229065321"></script>-->
+    <script src="js/app.min.js?_v=20231229065321"></script>
+  </body>
+</html>
