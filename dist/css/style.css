@@ -343,6 +343,10 @@ li {
      object-fit: cover;
 }
 
+.close__app {
+  display: none;
+}
+
 .tool__item-box {
   position: absolute;
   border-top: 1px solid #000;
